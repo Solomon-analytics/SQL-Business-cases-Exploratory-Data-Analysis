@@ -1,14 +1,14 @@
 /*===================================================================================================================
- Purpose    : Provides analysis of product performance by revenue and quantity 
-              for the current year/month. Identifies top-selling products and 
-              underperforming products relative to peers.
+ SECTION 1:
+ Purpose: Provides analysis of product performance by revenue and quantity 
+ for the current year/month. Identifies top-selling products and 
+ underperforming products relative to peers.
  -------------------------------------------------------------------------------------------------------------------
  Description:
  - Aggregates order and product data at the monthly level
  - Calculates product revenue and quantity purchased
  - Uses DENSE_RANK to rank products by revenue within each month/year
  - Flags products as performing or underperforming compared to monthly averages
- - Enables stakeholders to monitor product sales performance
  ===================================================================================================================*/
  
  CREATE OR REPLACE VIEW top_and_underperforming_products AS 
@@ -74,8 +74,9 @@ ORDER BY order_creation_month_num ASC;
 
 
 /*===================================================================================================================
- Purpose    : Provides a consolidated view of customer sales performance and behaviour, 
-              combining transactional sales data with customer information.  
+SECTION 2:
+Purpose: Provides a consolidated view of customer sales performance and behaviour, 
+        combining transactional sales data with customer information.  
  -------------------------------------------------------------------------------------------------------------------
  Description:
  - Joins sales fact table with customer and product dimensions at the order-line level
@@ -89,7 +90,6 @@ ORDER BY order_creation_month_num ASC;
       * Active/Inactive status
       * Customer tier (Tier-1 / Tier-2) based on lifetime value and activity
       * Churn risk category (High / Medium / Low)
- - Enables stakeholders to track customer performance, retention, and lifetime value
  ===================================================================================================================*/
  
  /*--------------------------------------------------------------------------------------------------------------------------------------------
@@ -199,8 +199,9 @@ FROM Aggregated_Table;
 
 
 /*===================================================================================================================
- Purpose    : Provides monthly and yearly customer revenue trends and quantifies 
-              each customer’s contribution to total business revenue.  
+ SECTION 3:
+ Purpose: Provides monthly and yearly customer revenue trends and quantifies 
+ each customer’s contribution to total business revenue.  
  -------------------------------------------------------------------------------------------------------------------
  Description:
  - Aggregates sales orders by customer, month, and year
@@ -209,10 +210,6 @@ FROM Aggregated_Table;
       * Customer’s revenue in the current month
       * Total business revenue for the month
       * Customer’s percentage contribution to monthly revenue
- - Enables stakeholders to:
-      * Identify key revenue-driving customers
-      * Track customer revenue trends across months/years
-      * Compare contribution patterns between 2024 and 2025
  ===================================================================================================================*/
  
  
@@ -253,7 +250,8 @@ FROM Aggregated_Table;
  
  
 /*===================================================================================================================
- Purpose    : Consolidates sales order metrics to monitor revenue performance, fulfillment, and customer trends.
+ SECTION 4:
+ Purpose: Consolidates sales order metrics to monitor revenue performance, fulfillment, and customer trends.
  -------------------------------------------------------------------------------------------------------------------
  Description:
  - Provides a consolidated sales orders dataset with business KPIs.
@@ -265,10 +263,6 @@ FROM Aggregated_Table;
       * Fulfillment time (days to ship)
       * On-time delivery flag
       * Customer-request-to-ship aging
- - Enables stakeholders to:
-      * Track revenue performance
-      * Monitor fulfillment KPIs
-      * Identify top-performing products, stores, and sales reps
  ===================================================================================================================*/ 
 
 
@@ -382,8 +376,9 @@ order_line_status;
 
 
 /*===================================================================================================================
- Purpose    : Provides consolidated shipment performance metrics by combining sales orders, shipments, customers, 
-              stores, and products at the delivery line level.
+ SECTION 5:
+ Purpose: Provides consolidated shipment performance metrics by combining sales orders, shipments, customers, 
+ stores, and products at the delivery line level.
  -------------------------------------------------------------------------------------------------------------------
  Description:
  - This report enables monitoring of delivery efficiency.  
@@ -399,7 +394,6 @@ order_line_status;
  - Supports supply chain and logistics teams in evaluating carrier reliability, fulfillment accuracy, and 
    overall delivery performance.  
  ===================================================================================================================*/
-
 
 CREATE OR REPLACE VIEW shipment_report AS 
 WITH Shipment_Aggregates AS (
@@ -494,13 +488,11 @@ FROM Shipment_Aggregates SA;
 
 
 /*==============================================================================================================
-Building Report:
-                  product report
+SECTION 6: product report
 ==============================================================================================================*/
 /*------------------------------------------------------------------------------------------------------------
 Purpose:
 - this report consolidates key product metrics and behaviour
-
 Highlights: 
 1. Gathers essential fields such as product name, product category and product cost
 2. segments products by revenue to identify high-performers, mid-range, or low-performers.
