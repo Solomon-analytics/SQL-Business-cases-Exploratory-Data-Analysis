@@ -1,4 +1,4 @@
-# SQL Business Cases & Exploratory Data Analysis Project
+# Sales Order Management Analytics & Reporting system
 
 This project focuses on performing exploratory data analysis (EDA) on a retail Order Management Database. The dataset captures business processes across Sales, Products, Customers, Stores, Shipments, and Sales Representatives.
 
