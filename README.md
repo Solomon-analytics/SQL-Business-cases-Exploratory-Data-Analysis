@@ -1,17 +1,3 @@
-Ah! Got it — so this is a **different project**, focused on **SQL-based exploratory data analysis (EDA) and business case reporting**, not the warehouse project.
-
-For that type of project, your **GitHub documentation** should emphasize:
-
-* The **purpose of the project** (EDA + SQL business cases).
-* The **type of datasets** used.
-* The **SQL artifacts** included (views, stored procedures, queries).
-* The **business questions** the SQL analyses answer.
-* Optional **visuals or diagrams** for results.
-
-Here’s a clean **README template** you could use for your EDA SQL project:
-
----
-
 # 🔍 SQL Business Cases & Exploratory Data Analysis Project
 
 Welcome to the **SQL Business Cases and EDA Project**!
