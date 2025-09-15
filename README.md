@@ -1,52 +1,66 @@
 # Sales Order Management Analytics & Reporting system
 
-This project focuses on performing exploratory data analysis (EDA) on a retail Order Management Database. The dataset captures business processes across Sales, Products, Customers, Stores, Shipments, and Sales Representatives.
+## Project Overview
 
-The analysis leverages SQL (MYSQL) to uncover sales trends, customer behaviour, product performance, store contribution to sales, and shipment efficiency.
-It provides business stakeholders with actionable insights into revenue performance, fulfillment operations, customer segmentation, and overall business growth.
+This project is about analysing a sales order management database using SQL. The goal was to turn raw sales order data into useful reports and insights for the business. I worked on cleaning and organising the data into usable tables, then created different SQL scripts to:
+* Explore sales and customer data (EDA).
+* Build views that acts as ready-made reports for stakeholders.
+* Write stored procedures to answer repeated business questions.
+* Analyse trends in sales, customers, products, stores, and deliveries.
+  
+This project is designed like a real business reporting system where managers and team can track performance and make better decisions.
+
+---
+
+## **Data Source:**
+
+* All data used in this project is **simulated** and generated for learning purposes.
+* The data structure and relationships were designed to **reflect real-world business scenarios**.
 
 ---
 
 ## Project Objective
 
-The main objective of this analysis is to:
+The main objective of this project is to:
 
-* Understand how sales and orders evolve over time (yearly & monthly).
-* Measure net revenue, order cancellations, order returns, and fulfillment performance.
-* Identify top-performing products, stores, and sales reps.
-* Segment customers into tiers and churn risk categories.
-* Provide performance benchmarks (against averages, targets values)
-* Quantify part-to-whole contributions (e.g., category contribution to total sales).
-Ultimately, the project builds a data foundation for business stakeholders to monitor KPIs, optimise sales strategies, and improve decision-making.
+* Track sales performance over time (yearly, monthly, cumulative).
+* Understand customer behaviour and revenue contribution.
+* Identify top and underperforming products and categories.
+* Measure fulfillment and delivery performance.
+* Automate repeated analysis using stored procedures.
 
 ---
 
 ## Business Questions Addressed:
 
-1. **Sales and Revenue Growth**
- * How has the business performed over the years?
- * What are the monthly and yearly sales trends?
- * What is the cumulative growth pattern (running totals, YoY comparisons)?
-2. **Product and Category Performance**
- * Which products and categories are top performers vs underperformers?
- * What is the revenue contribution of each category/product to overall sales?
- * How do products rank in terms of monthly revenue performance?
-3. **Store and Sales Rep contribution**
- * Which stores contribute the most revenue?
- * What percentage of total sales does each store and sales rep account for?
- * How does a given store rank compared to other stores?
-4. **Cutomer Insights**
- * Who are the multi-store customers, and what is their revenue contribution?
- * What is each customer's lifetime value, churn risk, and activity level?
- * How do individual customers' return rates compare with the global average?
- * Which customes fall into tier-1/tier-2/tier-3 segements based on order value and lifespan?
-5. **Fulfillment and Shipment Analysis**
- * What are the shipment lead times and delivery accuracy rates?
- * What percentage of deliveries are on-time vs overdue?
- * How do shipping carriers perform in terms of fulfillment relaibility?
-   
+### **Sales**
 
+* How has the business grown over the years?
+* Are there monthly trends or seasonality in sales?
+* How are net sales progressing over time?
+* Which stores bring in the most revenue, and how do they rank?
 
+### **Customers**
+
+* Who are the top customers by revenue?
+* How much does each customer contribute to total revenue?
+* What is the return and cancellation rate for each customer vs the overall average?
+* Which customers shop across multiple countries, and how much revenue do they bring?
+* Who are active, inactive, or at risk of leaving?
+
+### **Products**
+
+* Which products sell the most, and which underperform?
+* How do product categories perform compared to the average and last year?
+* Which categories contribute the most to overall revenue?
+* How can we group products into high, mid, and low performers?
+
+### **Shipments**
+
+* What is the average time to ship and deliver an order?
+* What percentage of deliveries are on time or overdue?
+* How often are orders fully delivered vs partially delivered?
+* What are the most recent shipment details for each customer?
 
 
 ## 👨‍💻 About Me
@@ -56,6 +70,3 @@ I enjoy transforming raw data into actionable insights and demonstrating **SQL E
 
 ---
 
-✅ **This repository is designed to showcase SQL-based EDA, reporting, and business case analysis.**
-
----
