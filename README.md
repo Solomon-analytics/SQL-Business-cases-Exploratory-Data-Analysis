@@ -62,7 +62,7 @@ The main objective of this project is to:
 * How often are orders fully delivered vs partially delivered?
 * What are the most recent shipment details for each customer?
 
-## **Entity relationship Diagram**
+## **Data Model Relationship**
 
 ![](erd_data_model.svg)
 
