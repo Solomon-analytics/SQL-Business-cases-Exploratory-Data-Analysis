@@ -13,7 +13,6 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 
 | Column Name          | Data Type    | Description                                                                           |
 | -------------------- | ------------ | --------------------------------------------------------------------------------------|                              
-| customer\_key        | VARCHAR(42)  | Surrogate key uniquely identifying each customer record: CONCAT('1','-', customer_id) |
 | customer\_id         | VARCHAR(10)  | Unique identifier assign to each customers                                            |
 | customer\_full\_name | VARCHAR(100) | Customer’s full name.                                                                 |
 | customer\_address    | VARCHAR(255) | Customer’s address.                                                                   |
@@ -22,9 +21,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 | customer\_postcode   | VARCHAR(20)  | Customer’s postal code.                                                               |
 | customer\_age        | INT          | Customer’s age (derived from source data).                                            |
 | customer\_gender     | VARCHAR(10)  | Customer’s gender.                                                                    |
-| dq\_record\_status   | VARCHAR(10)  | Data quality flag (Valid / Invalid).                                                  |
-| etl\_load\_timestamp | TIMESTAMP    | ETL load timestamp for audit.                                                         |
-| etl\_source          | VARCHAR(50)  | ETL metadata source table name.                                                       |
+                                                     
 
 ---
 
@@ -33,16 +30,13 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 **Purpose**: Provides product master data including categories, pricing, and identifiers.
 
 | Column Name          | Data Type     | Description                                                                           |
-| -------------------- | ------------- | --------------------------------------------------------------------------------------|
-| product\_key         | VARCHAR(42)   | Surrogate key uniquely identifying each product record: concat('1', '-', product_id). |
+| -------------------- | ------------- | --------------------------------------------------------------------------------------| 
 | product\_id          | VARCHAR(10)   | Natural identifier assigned to each product.                                          |
 | product\_name        | VARCHAR(100)  | Product name.                                                                         |
 | product\_category    | VARCHAR(50)   | Product category (e.g., Electronics, Apparel).                                        |
 | product\_number      | VARCHAR(30)   | Product reference or SKU number.                                                      |
 | product\_price\_usd  | DECIMAL(10,2) | Product unit price in USD.                                                            |
-| dq\_record\_status   | VARCHAR(10)   | Data quality flag (Valid / Invalid).                                                  |
-| etl\_load\_timestamp | TIMESTAMP     | ETL load timestamp for audit.                                                         |
-| etl\_source          | VARCHAR(50)   | ETL metadata source table name.                                                       |
+                                                     
 
 ---
 
@@ -51,16 +45,13 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 **Purpose**: Stores details about physical stores.
 
 | Column Name          | Data Type    | Description                                           |
-| -------------------- | ------------ | ----------------------------------------------------- |
-| store\_key           | VARCHAR(42)  | Surrogate key uniquely identifying each store record. |
+| -------------------- | ------------ | ----------------------------------------------------- | 
 | store\_location\_id  | VARCHAR(10)  | Unique identifier for the store location.             |
 | store\_address       | VARCHAR(255) | Location of the store.                                |
 | store\_city          | VARCHAR(50)  | City where store is located.                          |
 | store\_country       | VARCHAR(50)  | Country where store is located.                       |
 | store\_postcode      | VARCHAR(20)  | Postcode where store is located.                      |
-| dq\_record\_status   | VARCHAR(10)  | Data quality flag (Valid / Invalid).                  |
-| etl\_load\_timestamp | TIMESTAMP    | ETL load timestamp.                                   |
-| etl\_source          | VARCHAR(50)  | ETL metadata source table name.                       |
+                    
 
 ---
 
@@ -69,8 +60,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 **Purpose**: Stores information on sales representatives, their roles, and salaries.
 
 | Column Name          | Data Type     | Description                                               |
-| -------------------- | ------------- | --------------------------------------------------------- |
-| sales\_person\_key   | VARCHAR(42)   | Surrogate key: CONCATS(sales_person_id  & store_id).      |
+| -------------------- | ------------- | --------------------------------------------------------- |     
 | sales\_person\_id    | VARCHAR(10)   | Unique identifier for the sales person.                   |
 | store\_location\_id  | VARCHAR(10)   | Identifier of store where sales person assigned.          |
 | sales\_rep\_name     | VARCHAR(100)  | Full name of sales representative.                        |
@@ -80,9 +70,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 | store\_city          | VARCHAR(50)   | Store city where sales rep is assigned.                   |
 | store\_country       | VARCHAR(50)   | Store country where sales rep is assigned.                |
 | store\_postcode      | VARCHAR(20)   | Store postcode where sales rep is assigned.               |
-| dq\_record\_status   | VARCHAR(10)   | Data quality flag (Valid / Invalid).                      |
-| etl\_load\_timestamp | TIMESTAMP     | ETL load timestamp.                                       |
-| etl\_source          | VARCHAR(50)   | ETL metadata source table name.                           |
+                        
 
 ---
 
@@ -91,8 +79,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 **Purpose**: Captures details of customer orders, including quantities, values, and related entities.
 
 | Column Name               | Data Type     | Description                                                |
-| ------------------------- | ------------- | ---------------------------------------------------------- |
-| sales\_order\_key         | VARCHAR(42)   | Surrogate key: CONCAT(order_id & product_id  & store_id).  |
+| ------------------------- | ------------- | ---------------------------------------------------------- |  
 | order\_id                 | VARCHAR(10)   | Unique identifier for the order.                           |
 | product\_id               | VARCHAR(10)   | Identifier of the ordered product.                         |
 | store\_location\_id       | VARCHAR(10)   | Store where the order was placed.                          |
@@ -119,10 +106,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 | store\_address            | VARCHAR(255)  | Store address.                                             |
 | store\_city               | VARCHAR(50)   | Store city.                                                |
 | store\_country            | VARCHAR(50)   | Store country.                                             |
-| store\_postcode           | VARCHAR(20)   | Store postal code.                                         |
-| dq\_record\_status        | VARCHAR(10)   | Data quality flag (Valid / Invalid).                       |
-| etl\_load\_timestamp      | TIMESTAMP     | ETL load timestamp.                                        |
-| etl\_source               | VARCHAR(50)   | ETL metadata source table name.                            |
+| store\_postcode           | VARCHAR(20)   | Store postal code.                                         |                         
 
 ---
 
@@ -131,8 +115,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 **Purpose**: Captures shipments, deliveries, and fulfillment details for sales orders.
 
 | Column Name          | Data Type    | Description                                                                |
-| -------------------- | ------------ | ---------------------------------------------------------------------------|
-| ship\_order\_key     | VARCHAR(42)  | VARCHAR(42)	Surrogate key: CONCAT(order_id & ship_id  & product_id).       |
+| -------------------- | ------------ | ---------------------------------------------------------------------------|       
 | order\_id            | VARCHAR(10)  | Associated order identifier.                                               |
 | ship\_id             | VARCHAR(10)  | Shipment identifier.                                                       |
 | product\_id          | VARCHAR(10)  | Product identifier.                                                        |
@@ -157,10 +140,7 @@ It consists of **dimension tables** and **fact tables** that capture sales order
 | ship\_from\_address  | VARCHAR(255) | Origin store address.                                                      |
 | ship\_from\_city     | VARCHAR(50)  | Origin store city.                                                         |
 | ship\_from\_country  | VARCHAR(50)  | Origin store country.                                                      |
-| ship\_from\_postcode | VARCHAR(20)  | Origin store postal code.                                                  |
-| dq\_record\_status   | VARCHAR(10)  | Data quality flag (Valid / Invalid).                                       |
-| etl\_load\_timestamp | TIMESTAMP    | ETL load timestamp.                                                        |
-| etl\_source          | VARCHAR(50)  | ETL metadata source table name.                                            |
+| ship\_from\_postcode | VARCHAR(20)  | Origin store postal code.                                                  |                                          |
 
 ---
 
