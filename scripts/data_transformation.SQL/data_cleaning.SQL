@@ -57,7 +57,7 @@ FROM bronze_erp_customer_info;
 
 
 /*--------------------------------------------------------------------------------------------
-    -- CRM Customer Data Transformation
+    -- POS Customer Data Transformation
 ---------------------------------------------------------------------------------------------*/
 SELECT
 TRIM(REPLACE(id, '.', '')) AS Customer_id,
@@ -99,7 +99,7 @@ FROM bronze_pos_customer_info;
 
 
 /*--------------------------------------------------------------------------------------------
-    -- crm Product Data Transformation
+    -- POS Product Data Transformation
 ---------------------------------------------------------------------------------------------*/
 SELECT 
 TRIM(product_id) AS Product_Id,
@@ -170,7 +170,7 @@ FROM bronze_erp_product_info;
 
 
 /*--------------------------------------------------------------------------------------------
-    -- crm store products Data Transformation
+    -- POS store products Data Transformation
 ---------------------------------------------------------------------------------------------*/
 SELECT
 TRIM(REGEXP_REPLACE(store_location_id, '[-_~&,]', '')) AS Store_Location_Id,
@@ -196,7 +196,7 @@ NOW() AS creation_date
 FROM bronze_erp_Store_products_info;
 
 /*--------------------------------------------------------------------------------------------
-    -- crm store Data Transformation
+    -- POS store Data Transformation
 ---------------------------------------------------------------------------------------------*/
 SELECT
 TRIM(Store_location_id) AS Store_location_id,
@@ -329,16 +329,16 @@ WHERE order_id NOT LIKE '%DUP%';
 
 
 /*--------------------------------------------------------------------------------------------
-    -- crm sales details Data Transformation
+    -- POS sales details Data Transformation
 ---------------------------------------------------------------------------------------------*/
-WITH crm_sales_table AS (
+WITH pos_sales_table AS (
 SELECT 
 *,
 ROW_NUMBER() OVER ( PARTITION BY Order_id, customer_id, product_id, Store_Location_id, Invoice_number ORDER BY order_creation_date_id DESC) AS BN
 FROM bronze_pos_sales_details
 ),
 
-crm_sales_table2 AS (
+pos_sales_table2 AS (
 SELECT
 TRIM(order_id) AS Order_id,
 TRIM(product_id) AS Product_id,
@@ -416,7 +416,7 @@ WHERE order_id NOT LIKE '%DUP%';
 
 
 /*--------------------------------------------------------------------------------------------
-    -- crm ship details Data Transformation
+    -- POS ship details Data Transformation
 ---------------------------------------------------------------------------------------------*/
 WITH pos_Table AS (
 SELECT
