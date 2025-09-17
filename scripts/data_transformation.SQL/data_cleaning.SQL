@@ -1,15 +1,23 @@
-/*===========================================================================================
-Objective 1:
-## Data Cleaning: Whitespace trimming, unwanted characters removed, Numerical fields normalised
-## Clean and standardise unique identifier
-## Ensured naming convention in both tables follow a consistent format
-## Data Transformation: finding and Filling N/a Values
-## Data standardisation (Euros, £,$) converted to USD format
-## Derived columns(Customer_country, customer_state & Customer_postcode) from existing column
-## Derived columns(Store_country, Store_state) from existing column
-## Date ids convered to Date format
-## Window function combined with Common table expression for removal of duplicates
-============================================================================================*/
+/*==============================================================================================================
+Objective 1: Data Cleaning and Standardization
+================================================================================================================*/
+Description:
+This script prepares raw data in the Bronze Layer for the Silver Layer by applying cleaning and transformation rules.  
+The goal is to ensure consistency, accuracy, and readiness for analysis.
+
+Key Steps:
+- Removed extra whitespace and unwanted characters.
+- Normalized numeric fields and ensured consistent unique identifiers.
+- Applied consistent naming conventions across tables.
+- Handled missing values (N/A) by finding and filling them appropriately.
+- Standardized currencies (€, £, $) into a single format (USD).
+- Derived location fields such as customer_country, customer_state, customer_postcode, 
+  and store_country, store_state from existing columns.
+- Converted date IDs into proper date formats.
+- Used window functions with common table expressions (CTEs) to detect and remove duplicates.
+==============================================================================================================*/
+
+
 /*--------------------------------------------------------------------------------------------
     -- ERP Customer Data Transformation
 ---------------------------------------------------------------------------------------------*/
