@@ -94,7 +94,7 @@ CASE
   WHEN TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(address, ',', 4), ',', -1)) IS NULL THEN 'Missing_ state'
   WHEN Id IS NULL THEN 'Missing Id'
   ELSE 'OK' END AS data_quality_flag
-FROM bronze_crm_customer_info;
+FROM bronze_pos_customer_info;
 
 
 
@@ -130,7 +130,7 @@ CASE
     WHEN TRIM(product_Price) LIKE '%USD%' THEN CAST(REPLACE(product_price, '$', '') AS DECIMAL(10,2)) * 1
 ELSE TRIM(product_Price) END AS Product_Price_USD,
 NOW() AS Creation_date
-FROM bronze_crm_product_info;
+FROM bronze_pos_product_info;
 
 
 /*--------------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ TRIM(REGEXP_REPLACE(IFNULL(Available_quantity, 0), '[-_~&.+\',]', '')) AS Availa
 TRIM(REGEXP_REPLACE(IFNULL(Blocked_Quantity, 0), '[-_+~~]', '')) AS Blocked_Quantity,
 TRIM(received_date_id) AS received_date_id,
 NOW() AS creation_date
-FROM bronze_crm_Store_products_info;
+FROM bronze_pos_Store_products_info;
 
 
 /*--------------------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(store_location_address, ',', 3), ',', -1)) 
 TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(store_location_address, '(', -1), ')', 1)) AS Store_Country,
 TRIM(SUBSTRING_INDEX(store_location_address, ' ', -2)) AS Store_PostCode,
 NOW() AS creation_date
-FROM bronze_crm_store_info;
+FROM bronze_pos_store_info;
 
 
 /*--------------------------------------------------------------------------------------------
@@ -324,7 +324,7 @@ CASE
     WHEN order_creation_date > actual_shipment_date OR order_creation_date > customer_request_date
     THEN 'Bad Data' ELSE 'Ok'
     END AS order_creation_quality_check
-FROM erp_sales_table2
+FROM sales_table2
 WHERE order_id NOT LIKE '%DUP%';
 
 
@@ -335,7 +335,7 @@ WITH crm_sales_table AS (
 SELECT 
 *,
 ROW_NUMBER() OVER ( PARTITION BY Order_id, customer_id, product_id, Store_Location_id, Invoice_number ORDER BY order_creation_date_id DESC) AS BN
-FROM bronze_crm_sales_details
+FROM bronze_pos_sales_details
 ),
 
 crm_sales_table2 AS (
@@ -376,7 +376,7 @@ CASE
 TRIM(product_number) AS Product_Number,
 TRIM(invoice_number) AS Invoice_Number,
 TRIM(REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(sales_person_full_name,'[&~,.\'\-]', ''),'\\s+', ' '),'~', '')) AS Sales_Person_Name
-FROM crm_sales_table
+FROM Bronze_pos_sales_table
 WHERE BN=1
 )
 
@@ -411,20 +411,20 @@ CASE
     WHEN order_creation_date > actual_shipment_date OR order_creation_date > customer_request_date
     THEN 'Bad Data' ELSE 'Ok'
     END AS order_creation_quality_check
-FROM crm_sales_table2
+FROM sales_table2
 WHERE order_id NOT LIKE '%DUP%';
 
 
 /*--------------------------------------------------------------------------------------------
     -- crm ship details Data Transformation
 ---------------------------------------------------------------------------------------------*/
-WITH crm_Table AS (
+WITH pos_Table AS (
 SELECT
 *,
 ROW_NUMBER() OVER ( PARTITION BY Ship_id, order_id, product_id, store_location_id, customer_id ORDER BY Ship_date_id DESC) AS BN
-FROM bronze_crm_Ship_details),
+FROM bronze_pos_Ship_details),
 
-crm_table2 AS (
+pos_table2 AS (
 SELECT
 TRIM(Order_id) AS Order_id,
 TRIM(REGEXP_REPLACE(REGEXP_REPLACE(ship_id,'[+~]', ''),'\\s+', ' ')) AS Ship_id,
@@ -479,7 +479,7 @@ NOW() AS created_date,
 CASE
   WHEN delivery_date < ship_date THEN 'Bad Data'
   ELSE 'OK' END AS Delivery_ship_data_quality_check
-FROM crm_table2
+FROM pos_table2
 WHERE order_id NOT LIKE '%Dup%';
 
 
