@@ -2,11 +2,14 @@
 
 ## Project Overview
 
-This project is about analysing a sales order management database using SQL. The goal was to turn raw sales order data into useful reports and insights for the business. I worked on cleaning and organising the data into usable tables.
+This project focuses on analysing a sales order management database using SQL. The goal was to transoform raw sales, customer, and products data into clean, business ready data and generate meaningful insights for the business.
 
-The raw data came from two different source systems:
-* ERP (Enterprise Resource Planning) containing order, product, store products, sales, shipment details
-* POS (Point of sales) containing order, product, store products, sales, shipment details
+The raw data came from two different sources:
+
+* ERP (Enterprise Resource Planning): contains sales orders, product information, store data, and shipment details.
+* POS (Point of sales): contains sales transactions, product and store details, customer information, and shipment data.
+
+  
 * Explore sales and customer data (EDA).
 * Build views that acts as ready-made reports for stakeholders.
 * Write stored procedures to answer repeated business questions.
