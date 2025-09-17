@@ -1,9 +1,9 @@
 /*==============================================================================================================
-Load Silver Layer (Raw data --> cleaned and transformed  --> Silver)
+Load Silver Layer (Raw data(Bronze) --> cleaned and transformed  --> Silver)
 ==============================================================================================================
 
 Purpose:
-- This script populates the Silver Layer tables with raw data that has undergone 
+- This script populates the Silver Layer tables with raw data(Bronze) that has undergone 
   data cleaning and standardization.
 - It also consolidates and integrates records from multiple source systems 
   (e.g., ERP and CRM), such as merging relative data across both systems.
@@ -38,10 +38,10 @@ CREATE TABLE IF NOT EXISTS Customer_silver_layer (
 
 INSERT INTO Customer_silver_layer 
 SELECT *
-FROM bronze_sales_order_management.staging_erp_customer
+FROM bronze_erp_customer_info
 UNION 
 SELECT *
-FROM bronze_sales_order_management.staging_crm_customer;
+FROM bronze_crm_customer_info;
 
 
 -------------------------------------------------------------
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS Product_Silver_layer (
 
 INSERT INTO Product_Silver_layer
 SELECT *
-FROM bronze_sales_order_management.staging_erp_product
+FROM bronze_crm_product_info
 UNION
 SELECT *
-FROM bronze_sales_order_management.staging_crm_product;
+FROM bronze_erp_product_info;
 
 
 -------------------------------------------------------------
@@ -83,10 +83,10 @@ CREATE TABLE IF NOT EXISTS store_product_silver_layer (
 
 INSERT INTO store_product_silver_layer
 SELECT * 
-FROM bronze_sales_order_management.staging_erp_store_product
+FROM bronze_crm_store_products_info
 UNION
 SELECT *
-FROM bronze_sales_order_management.staging_crm_store_product;
+FROM bronze_erp_store_products_info;
 
 
 -------------------------------------------------------------
@@ -105,10 +105,10 @@ CREATE TABLE IF NOT EXISTS Store_silver_layer (
 
 INSERT INTO Store_silver_layer
 SELECT * 
-FROM bronze_sales_order_management.staging_crm_store
+FROM bronze_erp_store_info
 UNION
 SELECT *
-FROM bronze_sales_order_management.staging_erp_store;
+FROM bronze_crm_store_info;
 
 
 -------------------------------------------------------------
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS sales_person_silver_layer (
 
 INSERT INTO sales_person_silver_layer
 SELECT * 
-FROM bronze_sales_order_management.staging_erp_sales_person;
+FROM bronze_erp_sales_person_info;
 
 
 -------------------------------------------------------------
@@ -165,10 +165,10 @@ CREATE TABLE IF NOT EXISTS Order_Ship_silver_layer (
 
 INSERT INTO Order_Ship_silver_layer
 SELECT * 
-FROM bronze_sales_order_management.staging_erp_ship_details
+FROM bronze_erp_ship_details
 UNION
 SELECT * 
-FROM bronze_sales_order_management.staging_crm_ship_details;
+FROM bronze_crm_ship_details;
 
 
 -------------------------------------------------------------
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS sales_details_silver__layer (
 
 INSERT INTO sales_details_silver__layer
 SELECT *
-FROM bronze_sales_order_management.staging_Crm_sales_details
+FROM bronze_erp_sales_details
 UNION
 SELECT *
-FROM bronze_sales_order_management.staging_erp_sales_details;
+FROM bronze_crm_sales_details;
