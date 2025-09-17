@@ -41,7 +41,7 @@ SELECT *
 FROM bronze_erp_customer_info
 UNION 
 SELECT *
-FROM bronze_crm_customer_info;
+FROM bronze_pos_customer_info;
 
 
 -------------------------------------------------------------
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS Product_Silver_layer (
 
 INSERT INTO Product_Silver_layer
 SELECT *
-FROM bronze_crm_product_info
+FROM bronze_pos_product_info
 UNION
 SELECT *
 FROM bronze_erp_product_info;
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS store_product_silver_layer (
 
 INSERT INTO store_product_silver_layer
 SELECT * 
-FROM bronze_crm_store_products_info
+FROM bronze_pos_store_products_info
 UNION
 SELECT *
 FROM bronze_erp_store_products_info;
@@ -108,7 +108,7 @@ SELECT *
 FROM bronze_erp_store_info
 UNION
 SELECT *
-FROM bronze_crm_store_info;
+FROM bronze_pos_store_info;
 
 
 -------------------------------------------------------------
@@ -168,7 +168,7 @@ SELECT *
 FROM bronze_erp_ship_details
 UNION
 SELECT * 
-FROM bronze_crm_ship_details;
+FROM bronze_pos_ship_details;
 
 
 -------------------------------------------------------------
@@ -212,4 +212,4 @@ SELECT *
 FROM bronze_erp_sales_details
 UNION
 SELECT *
-FROM bronze_crm_sales_details;
+FROM bronze_pos_sales_details;
