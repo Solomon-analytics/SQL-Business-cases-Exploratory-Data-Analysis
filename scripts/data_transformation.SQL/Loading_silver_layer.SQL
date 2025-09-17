@@ -6,7 +6,7 @@ Purpose:
 - This script populates the Silver Layer tables with raw data(Bronze) that has undergone 
   data cleaning and standardization.
 - It also consolidates and integrates records from multiple source systems 
-  (e.g., ERP and CRM), such as merging relative data across both systems.
+  (e.g., ERP and POS), such as merging relative data across both systems.
 
 Actions Performed:
 1. Drops existing Silver Layer tables if they already exist (ensuring fresh loads).
@@ -17,7 +17,7 @@ Actions Performed:
 ==============================================================================================================*/
 
 -------------------------------------------------------------
--- Customer Silver Layer: Consolidating ERP & CRM Customers
+-- Customer Silver Layer: Consolidating ERP & POS Customers
 -------------------------------------------------------------
 
 DROP TABLE IF EXISTS Customer_silver_layer;
@@ -45,7 +45,7 @@ FROM bronze_pos_customer_info;
 
 
 -------------------------------------------------------------
--- Product Silver Layer: Consolidating ERP & CRM Products
+-- Product Silver Layer: Consolidating ERP & POS Products
 -------------------------------------------------------------
 
 DROP TABLE IF EXISTS Product_Silver_layer;
@@ -67,7 +67,7 @@ FROM bronze_erp_product_info;
 
 
 -------------------------------------------------------------
--- Store Product Silver Layer: ERP & CRM Store Inventory
+-- Store Product Silver Layer: ERP & POS Store Inventory
 -------------------------------------------------------------
 
 DROP TABLE IF EXISTS store_product_silver_layer;
@@ -90,7 +90,7 @@ FROM bronze_erp_store_products_info;
 
 
 -------------------------------------------------------------
--- Store Silver Layer: Consolidating ERP & CRM Stores
+-- Store Silver Layer: Consolidating ERP & POS Stores
 -------------------------------------------------------------
 
 DROP TABLE IF EXISTS Store_silver_layer;
@@ -132,7 +132,7 @@ FROM bronze_erp_sales_person_info;
 
 
 -------------------------------------------------------------
--- Order Shipment Silver Layer: ERP & CRM Shipment Data
+-- Order Shipment Silver Layer: ERP & POS Shipment Data
 -------------------------------------------------------------
 
 DROP TABLE IF EXISTS Order_Ship_silver_layer;
@@ -172,7 +172,7 @@ FROM bronze_pos_ship_details;
 
 
 -------------------------------------------------------------
--- Sales Details Silver Layer: ERP & CRM Sales Orders
+-- Sales Details Silver Layer: ERP & POS Sales Orders
 -------------------------------------------------------------
 
 DROP TABLE IF EXISTS sales_details_silver__layer;
