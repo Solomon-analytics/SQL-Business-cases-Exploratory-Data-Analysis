@@ -77,8 +77,7 @@ The main objective of this project is to:
 
 ## 👨‍💻 About Me
 
-Hi, I’m **Solomon Yakubu Oriyomi**, a **Data Analyst & SQL enthusiast**.
-I enjoy transforming raw data into actionable insights and demonstrating **SQL EDA** and analytics best practices through portfolio projects.
+Hi, I am **Solomon Yakubu**, a data professional with 4 years of experience building solutions that enables technical and non-technical teams make better decisions. I have rcently completed am Exploratory Data Analysis project using MYSQL database where i applied medallion architecture best practices to turn raw data into business ready data.
 
 ---
 
